@@ -49,7 +49,7 @@ The [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) prov
 ## Related
 
 - [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) — AGPL-3.0 reference implementation
-- [arXiv Paper](https://phionyx.ai/papers/phionyx) — Architecture paper (submission pending)
+- arXiv Paper — Architecture paper (submission pending)
 
 ## License
 
