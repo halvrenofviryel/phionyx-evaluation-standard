@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this standard, please cite it as below."
+title: "Phionyx Evaluation Standard"
+version: 0.1.0
+date-released: "2026-04-23"
+authors:
+  - family-names: Abak
+    given-names: Ali Toygar
+    affiliation: Phionyx Research
+license: CC-BY-SA-4.0
+url: "https://phionyx.ai/standard"
+repository-code: "https://github.com/halvrenofviryel/phionyx-evaluation-standard"
