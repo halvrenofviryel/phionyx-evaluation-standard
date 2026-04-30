@@ -41,6 +41,21 @@ The standard complements — not replaces — existing frameworks:
 | Document | Description |
 |----------|-------------|
 | [Phionyx Evaluation Standard v0.1](standard/phionyx_Evaluation_Standard_v0.1.md) | Full specification |
+| [Sample Evaluation Report](examples/sample-evaluation-report.md) | Worked L2 report on a fictional system — illustrates every output in §8 |
+
+## Sample Report
+
+A complete L2 evaluation report on a fictional customer-support agent
+(`Helios v2.4`) shows what the standard produces in practice: a
+Behavioral Profile, Risk & Drift Report, Ethics Compliance Report,
+Stability & Health Summary, Determinism Grade, and Certification
+Readiness Status, with a worked CONDITIONAL outcome and concrete
+mitigations.
+
+→ [`examples/sample-evaluation-report.md`](examples/sample-evaluation-report.md)
+
+The numbers are illustrative; the structure is exactly what a real
+evaluation produces.
 
 ## Reference Implementation
 
