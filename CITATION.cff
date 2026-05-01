@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this standard, please cite it as below."
+message: "If you use this standard in your research, please cite it as below."
 title: "Phionyx Evaluation Standard"
 version: 0.1.0
 date-released: "2026-04-23"
@@ -7,6 +7,21 @@ authors:
   - family-names: Abak
     given-names: Ali Toygar
     affiliation: Phionyx Research
+    email: founder@phionyx.ai
 license: CC-BY-SA-4.0
 url: "https://phionyx.ai/standard"
 repository-code: "https://github.com/halvrenofviryel/phionyx-evaluation-standard"
+type: dataset
+keywords:
+  - ai-evaluation
+  - benchmark
+  - vendor-independent
+  - model-agnostic
+  - ai-safety
+  - governance
+  - determinism
+  - evaluation-framework
+# identifiers:
+#   - type: doi
+#     value: 10.5281/zenodo.XXXXXXX
+#     description: Archived Zenodo release for v0.1.0 (uncomment after first archive)
