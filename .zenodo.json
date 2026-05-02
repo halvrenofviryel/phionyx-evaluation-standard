@@ -1,0 +1,33 @@
+{
+  "title": "Phionyx Evaluation Standard",
+  "description": "A vendor-independent, model-agnostic evaluation framework for AI systems. Defines behavioral assessment levels (L0-L3), determinism grades (D0-D3), and a four-gate governance architecture for measuring AI behavior over time and producing evidence that survives scrutiny.",
+  "creators": [
+    {
+      "name": "Abak, Ali Toygar",
+      "affiliation": "Phionyx Research",
+      "orcid": ""
+    }
+  ],
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "license": "CC-BY-SA-4.0",
+  "access_right": "open",
+  "keywords": [
+    "ai-evaluation",
+    "benchmark",
+    "vendor-independent",
+    "model-agnostic",
+    "ai-safety",
+    "governance",
+    "determinism",
+    "evaluation-framework"
+  ],
+  "communities": [],
+  "related_identifiers": [
+    {
+      "identifier": "https://phionyx.ai/standard",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}

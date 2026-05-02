@@ -73,6 +73,8 @@ The [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) (AGP
 }
 ```
 
+A machine-readable [`CITATION.cff`](CITATION.cff) is provided for GitHub's “Cite this repository” widget. A persistent Zenodo DOI for archived releases is planned — once issued it will be added here as a badge and to `CITATION.cff` under `identifiers:`.
+
 ## Contributing
 
 Feedback, extensions, and translations are welcome. Open an issue or submit a PR.
