@@ -204,12 +204,19 @@ Phionyx supports four evaluation levels.
 - Threshold-based evaluation
 - Conditional approval or mitigation required
 
-### Level 3 – Certification-Grade Evaluation
+### Level 3 – Certification-Oriented Evidence Profile
 - Full state traceability (deterministic state evolution logs)
 - Reproducible results (100% deterministic execution for D3 systems)
 - Governance- and audit-ready artifacts
 - Complete telemetry and execution trace archives
 - Semantic time-based memory traceability (for applicable systems)
+
+> **Naming note:** Earlier drafts used the label *Certification-Grade*. The
+> standard does not certify systems; it produces evidence suitable for
+> certification under external schemes (NIST AI RMF, ISO/IEC 42001, EU AI
+> Act). The renamed *Certification-Oriented Evidence Profile* makes this
+> distinction explicit. References to the older label remain in this v0.1
+> revision for backward compatibility and will be cleaned up in v0.2.
 
 ### 5.1 Migration Playbook: L1 → L2 → L3
 
@@ -350,7 +357,7 @@ Phionyx Evaluation Standard is validated against the Phionyx reference implement
 
 ### Core Products (Tier 1):
 
-- **Phionyx Core SDK (Echoism Architecture):** Deterministic execution runtime, thermodynamic state management, 46-block canonical pipeline (v3.8.0), state/audit backbone. Implements D3 (Fully Deterministic) grading and L3 (Certification-Grade) evaluation level.
+- **Phionyx Core SDK (Echoism Architecture):** Deterministic execution runtime, thermodynamic state management, 46-block canonical pipeline (v3.8.0), state/audit backbone. Targets D3 (Fully Deterministic) grading and L3 (Certification-Oriented Evidence Profile) evaluation level under controlled reproducibility tests; independent third-party validation pending.
 - **Phionyx Governance Node:** 4 gate architecture (Outbound, Merge, Release, Data) with pre-response internal state governance, EthicsVector-based constraint enforcement, cognitive envelope validation.
 - **Phionyx Interlink Protocol:** Typed envelope (AgentMessageEnvelope), schema-enforced agent communication, participant-scoped cognitive isolation, non-persistence doctrine for derived metrics.
 
@@ -363,18 +370,18 @@ Phionyx Evaluation Standard is validated against the Phionyx reference implement
 
 ### Evaluation Level Mapping:
 
-- **Core SDK (Echoism):** L3 (Certification-Grade), D3 (Fully Deterministic)
+- **Core SDK (Echoism):** L3 (Certification-Oriented Evidence Profile), D3 (Fully Deterministic)
   - 100% deterministic execution
   - Full state traceability via thermodynamic state vector
   - 46-block canonical pipeline (v3.8.0) (contract v3.8.0) with block-level telemetry
   - Semantic time-based memory system with physics-based cache eviction
   - Integrity benchmark: <0.5% deviation across test cases
   - Scientific verification: 6/6 physics tests passed
-- **Governance Node:** L3 (Certification-Grade)
+- **Governance Node:** L3 (Certification-Oriented Evidence Profile)
   - Pre-response governance with EthicsVector enforcement
   - 4 gate architecture with complete audit trails
   - Cognitive envelope validation and participant isolation
-- **Interlink Protocol:** L3 (Certification-Grade)
+- **Interlink Protocol:** L3 (Certification-Oriented Evidence Profile)
   - Schema-enforced agent communication
   - Complete message traceability
   - Evidence requirement compliance
@@ -573,7 +580,7 @@ It enables trust without centralization, governance without vendor control, and 
 ### Reference Implementation
 
 - **Phionyx Core SDK:** [GitHub Repository - to be published]
-- **Echoism Architecture:** Reference implementation achieving D3 (Fully Deterministic) and L3 (Certification-Grade) evaluation
+- **Echoism Architecture:** Reference implementation achieving D3 (Fully Deterministic) and L3 (Certification-Oriented Evidence Profile) evaluation
 
 ---
 
