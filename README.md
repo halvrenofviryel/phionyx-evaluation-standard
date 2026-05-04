@@ -3,7 +3,8 @@
 **Vendor-independent framework for measuring AI system behavioral reliability — not just accuracy.**
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Version](https://img.shields.io/badge/version-0.1-blue.svg)](standard/)
+[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)](standard/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20027513.svg)](https://doi.org/10.5281/zenodo.20027513)
 
 Most AI evaluation focuses on benchmark scores. This standard measures what happens *after* deployment: does the system behave consistently? Does it drift? Does it fail silently? Can you prove it?
 
@@ -59,21 +60,23 @@ evaluation produces.
 
 ## Reference Implementation
 
-The [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) (AGPL-3.0) provides a reference implementation — 2,571 tests, 46-block pipeline, CQS 0.862.
+The [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) (AGPL-3.0, v0.3.0, [DOI 10.5281/zenodo.20027534](https://doi.org/10.5281/zenodo.20027534)) provides a reference implementation — 1,137-test public CI subset, mypy strict-clean across 327 source files, 46-block pipeline (contract v3.8.0), and a v0.3.0 reproducibility pack attached to every release.
 
 ## Citation
 
 ```bibtex
 @techreport{abak2026phionyx_standard,
   author      = {Abak, Ali Toygar},
-  title       = {Phionyx Evaluation Standard v0.1},
+  title       = {Phionyx Evaluation Standard},
   institution = {Phionyx Research},
   year        = {2026},
-  url         = {https://github.com/halvrenofviryel/phionyx-evaluation-standard},
+  version     = {0.1.1},
+  doi         = {10.5281/zenodo.20027513},
+  url         = {https://doi.org/10.5281/zenodo.20027513},
 }
 ```
 
-A machine-readable [`CITATION.cff`](CITATION.cff) is provided for GitHub's “Cite this repository” widget. A persistent Zenodo DOI for archived releases is planned — once issued it will be added here as a badge and to `CITATION.cff` under `identifiers:`.
+The DOI above is the **concept DOI** — it always resolves to the latest archived version. To pin a specific release, use the version DOI in [`CITATION.cff`](CITATION.cff): v0.1.1 is `10.5281/zenodo.20027514`.
 
 ## Contributing
 
