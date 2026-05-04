@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this standard in your research, please cite it as below."
 title: "Phionyx Evaluation Standard"
-version: 0.1.0
-date-released: "2026-04-23"
+version: 0.1.1
+date-released: "2026-05-04"
 authors:
   - family-names: Abak
     given-names: Ali Toygar
@@ -24,4 +24,4 @@ keywords:
 # identifiers:
 #   - type: doi
 #     value: 10.5281/zenodo.XXXXXXX
-#     description: Archived Zenodo release for v0.1.0 (uncomment after first archive)
+#     description: Archived Zenodo release for v0.1.1 (uncomment after first archive)
