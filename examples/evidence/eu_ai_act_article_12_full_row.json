@@ -1,0 +1,29 @@
+{
+  "framework": "EU AI Act 2024/1689",
+  "clause": "Article 12(1) — Record-keeping (automatic event logs)",
+  "coverage": "Full",
+  "coverage_scope": "Full only with respect to the runtime's record-generation mechanism; legal obligation as a whole requires deployer programme.",
+  "mechanisms": [
+    "phionyx_core/contracts/v4/audit_record.py",
+    "phionyx_core/governance/audit_chain.py",
+    "phionyx_core/pipeline/blocks/audit_layer.py"
+  ],
+  "evidence": [
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/examples/governance/audit_chain_demo.py",
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/CANONICAL_EVIDENCE_TABLE.md#audit-chain-integrity"
+  ],
+  "deployer_responsibility": "The deployer is responsible for log retention, periodic chain-integrity verification, documented procedures linking audit replay to corrective action, post-market monitoring of audit availability, and signing-key management.",
+  "assessment_signal": "governance_envelope.integrity.canonical_json_hash_chain",
+  "last_verified": "2026-04-23",
+  "assumptions": [
+    "Single-tenant deployment",
+    "Phionyx Core SDK >= v0.3.0",
+    "Ed25519 signing key managed by the deployer's KMS",
+    "External time attestation available for record timestamps"
+  ],
+  "authored_by": "phionyx-research",
+  "extensions": {
+    "phionyx.audit_block_id": "audit_layer",
+    "phionyx.canonical_pipeline_version": "v3.8.0"
+  }
+}

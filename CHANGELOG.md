@@ -1,3 +1,37 @@
+## [v0.2.0-draft] — Unreleased
+
+Public draft of the Evidence-Oriented Runtime Telemetry Profile, supplement to v0.1.1. The v0.1.1 standard document and Zenodo deposit (DOI 10.5281/zenodo.20027514) remain unchanged and citable.
+
+### Added
+
+- **Evidence-Oriented Runtime Telemetry Profile** as a supplement document at `standard/phionyx_Evaluation_Standard_v0.2.md`, grounded in arXiv Paper 2 (Abak 2026): *"Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence"*.
+- **Runtime-scoped coverage labels** — `Runtime-Full / Runtime-Partial / Runtime-Gap` — distinct from the v0.1 L0–L3 maturity and D0–D3 determinism axes.
+- **`assessment_signal` requirement** — schema-enforced on Runtime-Full rows via JSON Schema `allOf` `if/then` (Draft 2020-12). A Full row without `assessment_signal` is a schema violation.
+- **Compliance-Mapping Row Schema (v0.1)** at `schemas/evidence/compliance_mapping_row.schema.json`. Implementation-neutral, vendor-neutral.
+- **Three worked evidence-row examples** at `examples/evidence/`:
+  - `eu_ai_act_article_12_full_row.json` (Runtime-Full, `assessment_signal: governance_envelope.integrity.canonical_json_hash_chain`).
+  - `eu_ai_act_article_14_partial_row.json` (Runtime-Partial, no `assessment_signal`).
+  - `eu_ai_act_article_10_gap_row.json` (Runtime-Gap, empty mechanisms/evidence).
+- **Disambiguation table** in §3 of the supplement separating D0–D3, L0–L3, Full/Partial/Gap, and `assessment_signal` axes.
+
+### Clarified
+
+- **Composite Quality Score (CQS)** is positioned as a summary indicator, not a default `assessment_signal`. Any governance claim based on CQS MUST also declare the underlying `assessment_signal`(s). Composite-only scoring SHOULD NOT be used for trajectory-failure claims where channel masking is possible.
+- **No certification claim.** The supplement explicitly states the standard does not certify AI systems; it specifies an evidence format that can support external review, assurance, and standards alignment.
+
+### Unchanged
+
+- v0.1.1 standard document (`standard/phionyx_Evaluation_Standard_v0.1.md`) and its Zenodo deposit (DOI 10.5281/zenodo.20027514) remain citable and unmodified.
+- `CITATION.cff` stays at v0.1.1 until v0.2.0 release.
+
+### Deferred (planned for v0.2.0 release)
+
+- Schema test suite at `tests/schemas/test_compliance_mapping_row_schema.py`.
+- Standalone assessment-signal registry at `docs/assessment_signals.md`.
+- Governed Response Envelope JSON Schema at `schemas/evidence/governed_response_envelope.v0_1.schema.json`.
+- Light-touch wording-consistency pass on v0.1 (residual "certification" phrasing) — published as a v0.2 supplement note rather than as edits to the Zenodo-frozen v0.1.1 file.
+
+
 # Changelog
 
 ## v0.1.1 (2026-05-04)
