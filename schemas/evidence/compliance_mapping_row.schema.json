@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://phionyx.ai/schemas/evidence/compliance_mapping_row.schema.json",
   "title": "Compliance-Mapping Row Schema (v0.1)",
-  "description": "Implementation-neutral JSON Schema (Draft 2020-12) for one row of an agentic-AI governance evidence mapping. Defined in arXiv Paper 2 (Abak 2026): 'Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence', §4.2, and published as part of the Phionyx Evaluation Standard v0.2 supplement (standard/phionyx_Evaluation_Standard_v0.2.md). The schema is intended to be reusable by any agentic-AI runtime that can publish reviewer-runnable evidence; field-level reusability is not required, format-level reusability is.",
+  "description": "Implementation-neutral JSON Schema (Draft 2020-12) for one row of an agentic-AI governance evidence mapping. Defined and published as part of the Phionyx Evaluation Standard v0.2 supplement (standard/phionyx_Evaluation_Standard_v0.2.md). The schema is intended to be reusable by any agentic-AI runtime that can publish reviewer-runnable evidence; field-level reusability is not required, format-level reusability is.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -31,7 +31,7 @@
     "coverage": {
       "type": "string",
       "enum": ["Full", "Partial", "Gap"],
-      "description": "Runtime-scoped coverage label per Paper 2 Definition 3 and §3.2 P2, read as Runtime-Full / Runtime-Partial / Runtime-Gap. 'Full' means the runtime supplies a complete technical mechanism for the runtime-scoped portion of the framework clause, under the assumptions and deployer programme stated in the row; 'Partial' means the runtime supplies part of the technical mechanism; 'Gap' means the runtime does not supply this mechanism, by design or due to scope. NEVER asserts legal, regulatory, or third-party conformance."
+      "description": "Runtime-scoped coverage label, read as Runtime-Full / Runtime-Partial / Runtime-Gap. 'Full' means the runtime supplies a complete technical mechanism for the runtime-scoped portion of the framework clause, under the assumptions and deployer programme stated in the row; 'Partial' means the runtime supplies part of the technical mechanism; 'Gap' means the runtime does not supply this mechanism, by design or due to scope. NEVER asserts legal, regulatory, or third-party conformance."
     },
     "coverage_scope": {
       "type": "string",
@@ -57,7 +57,7 @@
     "deployer_responsibility": {
       "type": "string",
       "minLength": 1,
-      "description": "Non-empty string describing what the deploying organisation must supply for the mapping to hold. Required on every row regardless of coverage (Paper 2 P3). A Full row with an empty deployer_responsibility field is a schema violation."
+      "description": "Non-empty string describing what the deploying organisation must supply for the mapping to hold. Required on every row regardless of coverage. A Full row with an empty deployer_responsibility field is a schema violation."
     },
     "last_verified": {
       "type": "string",
@@ -82,7 +82,7 @@
     "assessment_signal": {
       "type": "string",
       "minLength": 1,
-      "description": "For Full rows, the specific channel, metric, or composite the row's coverage claim is interpreted against (e.g. 'phi_cognitive', 'capability_budget', 'integrity.canonical_json_hash_chain'). Required on Full rows; permitted to be omitted on Partial or Gap rows. A Full row without assessment_signal is a schema violation per Paper 2 Definition 6."
+      "description": "For Full rows, the specific channel, metric, or composite the row's coverage claim is interpreted against (e.g. 'phi_cognitive', 'capability_budget', 'integrity.canonical_json_hash_chain'). Required on Full rows; permitted to be omitted on Partial or Gap rows. A Full row without assessment_signal is a schema violation."
     },
     "extensions": {
       "type": "object",

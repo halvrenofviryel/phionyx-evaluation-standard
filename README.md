@@ -25,7 +25,7 @@ The v0.2 supplement adds one orthogonal layer to v0.1.1. The principal new requi
 | Worked Partial row | [`examples/evidence/eu_ai_act_article_14_partial_row.json`](examples/evidence/eu_ai_act_article_14_partial_row.json) |
 | Worked Gap row | [`examples/evidence/eu_ai_act_article_10_gap_row.json`](examples/evidence/eu_ai_act_article_10_gap_row.json) |
 
-The supplement is grounded in arXiv Paper 2 (Abak 2026), *"Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence"*. The arXiv identifier is added to this README on Paper 2 announcement.
+The supplement is self-contained: it defines the row format, the schema, and the assessment-signal requirement directly. Worked rows demonstrate Runtime-Full, Runtime-Partial, and Runtime-Gap cases mapped onto EU AI Act articles.
 
 ### Quick check — validate an evidence row
 
@@ -74,9 +74,8 @@ A new versioned Zenodo deposit will be created at v0.2.0 release; `CITATION.cff`
 
 ## Companion artefacts
 
-- **Phionyx Core SDK v0.3.0** — reference runtime implementation. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027535`](https://doi.org/10.5281/zenodo.20027535).
-- **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture. ID added on announcement.
-- **arXiv Paper 2** (Abak 2026) — evidence-oriented runtime telemetry protocol. ID added on announcement.
+- **Phionyx Core SDK v0.5.0** — reference runtime implementation. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
+- **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture (currently in moderation). ID added on announcement.
 
 ---
 

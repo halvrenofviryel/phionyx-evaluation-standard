@@ -1,10 +1,10 @@
-## [v0.2.0-draft] — Unreleased
+## [v0.2.0] — 2026-05-24
 
-Public draft of the Evidence-Oriented Runtime Telemetry Profile, supplement to v0.1.1. The v0.1.1 standard document and Zenodo deposit (DOI 10.5281/zenodo.20027514) remain unchanged and citable.
+The **Evidence-Oriented Runtime Telemetry Profile** — a self-contained supplement to v0.1.1. The v0.1.1 standard document and Zenodo deposit (DOI 10.5281/zenodo.20027514) remain unchanged and citable.
 
 ### Added
 
-- **Evidence-Oriented Runtime Telemetry Profile** as a supplement document at `standard/phionyx_Evaluation_Standard_v0.2.md`, grounded in arXiv Paper 2 (Abak 2026): *"Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence"*.
+- **Evidence-Oriented Runtime Telemetry Profile** as a supplement document at `standard/phionyx_Evaluation_Standard_v0.2.md`, defining the row format that agentic-AI runtimes use to publish reviewer-runnable evidence.
 - **Runtime-scoped coverage labels** — `Runtime-Full / Runtime-Partial / Runtime-Gap` — distinct from the v0.1 L0–L3 maturity and D0–D3 determinism axes.
 - **`assessment_signal` requirement** — schema-enforced on Runtime-Full rows via JSON Schema `allOf` `if/then` (Draft 2020-12). A Full row without `assessment_signal` is a schema violation.
 - **Compliance-Mapping Row Schema (v0.1)** at `schemas/evidence/compliance_mapping_row.schema.json`. Implementation-neutral, vendor-neutral.
@@ -22,9 +22,8 @@ Public draft of the Evidence-Oriented Runtime Telemetry Profile, supplement to v
 ### Unchanged
 
 - v0.1.1 standard document (`standard/phionyx_Evaluation_Standard_v0.1.md`) and its Zenodo deposit (DOI 10.5281/zenodo.20027514) remain citable and unmodified.
-- `CITATION.cff` stays at v0.1.1 until v0.2.0 release.
 
-### Deferred (planned for v0.2.0 release)
+### Deferred (planned for v0.2.1)
 
 - Schema test suite at `tests/schemas/test_compliance_mapping_row_schema.py`.
 - Standalone assessment-signal registry at `docs/assessment_signals.md`.

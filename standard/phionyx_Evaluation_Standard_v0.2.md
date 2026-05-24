@@ -1,8 +1,8 @@
 # Phionyx Evaluation Standard — v0.2 Supplement
 
 **Title:** Evidence-Oriented Runtime Telemetry Profile
-**Version:** 0.2.0-draft (unreleased)
-**Status:** Public draft, supplement to v0.1.1
+**Version:** 0.2.0
+**Status:** Released, supplement to v0.1.1
 **Author:** Ali Toygar Abak (Phionyx Research)
 **License:** CC-BY-SA-4.0
 **Predecessor:** [`phionyx_Evaluation_Standard_v0.1.md`](./phionyx_Evaluation_Standard_v0.1.md)
@@ -13,7 +13,7 @@
 
 This document is a **supplement** to v0.1.1, not a replacement. Everything in v0.1.1 (the five evaluation dimensions, the L0–L3 evaluation maturity levels, the D0–D3 determinism grades, the AI Agent Operating Model, and the existing reference implementation) remains in force and citable; the v0.1.1 Zenodo deposit (DOI [`10.5281/zenodo.20027514`](https://doi.org/10.5281/zenodo.20027514)) is unchanged.
 
-v0.2 adds one orthogonal layer: an **Evidence-Oriented Runtime Telemetry Profile**. The profile specifies how runtime evidence rows that map a runtime's mechanisms onto external governance frameworks (e.g. EU AI Act, NIST AI RMF, OWASP Agentic AI Threats, ISO/IEC 42001) should be published, scoped, and assessed. The profile is published as JSON Schema (Draft 2020-12) at [`schemas/evidence/compliance_mapping_row.schema.json`](../schemas/evidence/compliance_mapping_row.schema.json) and is grounded in arXiv Paper 2 (Abak 2026): *"Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence"*.
+v0.2 adds one orthogonal layer: an **Evidence-Oriented Runtime Telemetry Profile**. The profile specifies how runtime evidence rows that map a runtime's mechanisms onto external governance frameworks (e.g. EU AI Act, NIST AI RMF, OWASP Agentic AI Threats, ISO/IEC 42001) should be published, scoped, and assessed. The profile is published as JSON Schema (Draft 2020-12) at [`schemas/evidence/compliance_mapping_row.schema.json`](../schemas/evidence/compliance_mapping_row.schema.json) and is normative in its own right — this document is the canonical definition.
 
 The v0.2 profile is **vendor-neutral**. It does not assume the Phionyx Core runtime; it specifies a row format that any agentic-AI runtime can adopt to publish governance-evidence rows in a reviewer-reproducible shape.
 
@@ -58,7 +58,7 @@ The schema enforces the requirement with a conditional `allOf` rule (Draft 2020-
 
 ### 2.1 Assessment-signal forms
 
-The `assessment_signal` value is intentionally not constrained to a fixed enum; valid forms are runtime-shaped. The five trajectory-failure fixtures referenced in Paper 2 §6.5 use four distinct assessment signals:
+The `assessment_signal` value is intentionally not constrained to a fixed enum; valid forms are runtime-shaped. The five trajectory-failure fixtures the profile supports use four distinct assessment signals:
 
 | Fixture | Failure mode | Assessment signal |
 | --- | --- | --- |
@@ -131,7 +131,7 @@ v0.1.1 introduces a Composite Quality Score (CQS) as a summary indicator of mult
 
 > **Composite Quality Score is a summary indicator, not an assessment signal by default.** Any governance claim based on CQS MUST also declare the underlying `assessment_signal`(s) the claim is actually being assessed against. Composite-only scoring SHOULD NOT be used for trajectory-failure claims where channel masking is possible.
 
-The structural argument is documented in Paper 2 §6.4 (NPC coherence-drift trace): on a four-turn drift trajectory, the cognitive channel falls cleanly from 0.59 to 0.09 while the physical channel rises with arousal from 1.38 to 2.88; the composite scalar stays roughly flat in `[0.69, 0.79]`. A protocol that classified on the composite would not flag this trajectory as drift. A `Full` row that declared its `assessment_signal` as `phi_total` for this clause would be wrong by construction; a row that declared `phi_cognitive` would be correct.
+The structural argument is shown by the NPC coherence-drift reference trace published at [phionyx.ai/narrative-coherence](https://phionyx.ai/narrative-coherence): on a four-turn drift trajectory, the cognitive channel falls cleanly from 0.59 to 0.09 while the physical channel rises with arousal from 1.38 to 2.88; the composite scalar stays roughly flat in `[0.69, 0.79]`. A protocol that classified on the composite would not flag this trajectory as drift. A `Full` row that declared its `assessment_signal` as `phi_total` for this clause would be wrong by construction; a row that declared `phi_cognitive` would be correct.
 
 This clarification does not deprecate CQS. It scopes its use: CQS remains a useful programme-level summary; it is not a substitute for the per-row assessment-signal declaration.
 
@@ -139,24 +139,23 @@ This clarification does not deprecate CQS. It scopes its use: CQS remains a usef
 
 ## 6. Cross-References
 
-- **arXiv Paper 2** (Abak 2026), *"Evidence-Oriented Runtime Telemetry for Agentic AI Governance: Trajectory Failures, Assessment Signals, and Reviewer-Runnable Evidence"* — primary technical exposition. The arXiv identifier is added to this document at the v0.2.0 release.
-- **arXiv Paper 1** (Abak 2026), companion architecture paper. The arXiv identifier is added to this document at the v0.2.0 release.
-- **Phionyx Core SDK v0.3.0** — reference implementation. Zenodo concept DOI: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534); v0.3.0 versioned DOI: [`10.5281/zenodo.20027535`](https://doi.org/10.5281/zenodo.20027535). Public repository: [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research).
+- **arXiv Paper 1** (Abak 2026) — companion architecture paper, currently in moderation. The arXiv identifier is added to this document on announcement.
+- **Phionyx Core SDK v0.5.0** — reference implementation. Zenodo concept DOI: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534). Public repository: [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research).
 - **Phionyx Evaluation Standard v0.1.1** — predecessor document. Zenodo concept DOI: [`10.5281/zenodo.20027513`](https://doi.org/10.5281/zenodo.20027513); v0.1.1 versioned DOI: [`10.5281/zenodo.20027514`](https://doi.org/10.5281/zenodo.20027514).
 
 ---
 
-## 7. What is not in v0.2.0-draft (deferred)
+## 7. What is not in v0.2.0 (deferred to v0.2.1)
 
-The following items are planned for the v0.2.0 release window or later releases. They are **not** part of this draft:
+The following items are planned for a later release. They are **not** part of v0.2.0:
 
 - A schema test suite (`tests/schemas/test_compliance_mapping_row_schema.py`).
 - A Governed Response Envelope JSON Schema (`schemas/evidence/governed_response_envelope.v0_1.schema.json`).
 - A standalone assessment-signal registry (`docs/assessment_signals.md`).
-- A pass over v0.1.1 to retire residual "certification" wording (v0.1.1 is Zenodo-frozen; the supplement defers a wording-cleanup release to v0.2.0 final).
+- A pass over v0.1.1 to retire residual "certification" wording (v0.1.1 is Zenodo-frozen; the wording-cleanup is deferred to a future supplement note).
 - Updates to the v0.1 AI Agent Operating Model to thread `assessment_signal`, `coverage_scope`, and `deployer_responsibility` through agent output evidence.
 
-These are tracked for the v0.2.0 release; this document will be re-issued at release with the deferred items addressed.
+These items are tracked for v0.2.1 and beyond.
 
 ---
 
