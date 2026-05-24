@@ -1,0 +1,30 @@
+{
+  "framework": "EU AI Act 2024/1689",
+  "clause": "Article 14 — Human oversight",
+  "coverage": "Partial",
+  "coverage_scope": "Runtime supplies HITL queue, ethics gate, and kill-switch primitives that an oversight programme can rely on; Article 14 also requires interpretability of system behaviour and human-intervention design that the runtime alone cannot fully realise.",
+  "mechanisms": [
+    "phionyx_core/governance/human_in_the_loop.py",
+    "phionyx_core/governance/deliberative_ethics.py",
+    "phionyx_core/governance/kill_switch.py",
+    "phionyx_core/pipeline/blocks/deliberative_ethics_gate.py",
+    "phionyx_core/pipeline/blocks/kill_switch_gate.py"
+  ],
+  "evidence": [
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/tests/unit/core/test_human_in_the_loop.py",
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/tests/unit/core/test_deliberative_ethics.py",
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/tests/unit/core/test_kill_switch.py",
+    "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/CANONICAL_EVIDENCE_TABLE.md#governance-gates"
+  ],
+  "deployer_responsibility": "The deployer is responsible for the human-oversight programme that interprets and acts on these primitives: documented intervention procedures, named oversight personnel, training of those personnel, accessible interpretability of system decisions for the oversight role, and an audit loop closing intervention back into corrective action. The runtime cannot author the oversight programme.",
+  "last_verified": "2026-04-23",
+  "assumptions": [
+    "Single-tenant deployment",
+    "Phionyx Core SDK >= v0.3.0",
+    "Oversight personnel have access to the runtime's HITL queue and to envelope replay tooling"
+  ],
+  "authored_by": "phionyx-research",
+  "extensions": {
+    "phionyx.canonical_pipeline_version": "v3.8.0"
+  }
+}

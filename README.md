@@ -1,89 +1,84 @@
 # Phionyx Evaluation Standard
 
-**Vendor-independent framework for measuring AI system behavioral reliability — not just accuracy.**
+> Vendor-independent proposal for publishing reviewer-runnable governance evidence for agentic AI runtimes.
 
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)](standard/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20027513.svg)](https://doi.org/10.5281/zenodo.20027513)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20027513.svg)](https://doi.org/10.5281/zenodo.20027513) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-Most AI evaluation focuses on benchmark scores. This standard measures what happens *after* deployment: does the system behave consistently? Does it drift? Does it fail silently? Can you prove it?
+The **Phionyx Evaluation Standard** specifies how an agentic AI runtime can publish governance evidence in a form that is reviewer-reproducible, vendor-neutral, and scoped honestly between runtime mechanism and deployer responsibility. The standard is published in two layers:
 
-## What This Defines
+- **v0.1.1 (released, citable):** five evaluation dimensions — coherence (Φ), entropy and behavioural stability, ethics and governance, drift and silent failure, system health — together with the L0–L3 evaluation maturity levels and the D0–D3 determinism grades.
+- **v0.2 (current draft):** the **Evidence-Oriented Runtime Telemetry Profile** — runtime-scoped coverage labels (`Full / Partial / Gap`), the `assessment_signal` schema requirement, the Compliance-Mapping Row Schema (JSON Schema Draft 2020-12), and worked evidence-row examples.
 
-Five evaluation dimensions for runtime behavioral assurance:
+> This repository does not certify AI systems. It defines evidence formats and evaluation profiles that can support external review, assurance, and standards alignment.
 
-| Dimension | What It Measures |
-|-----------|-----------------|
-| **Coherence (Phi)** | Cognitive resonance and response quality over time |
-| **Entropy & Stability** | Behavioral consistency under varied inputs |
-| **Ethics & Governance** | Safety gate enforcement and ethical reasoning |
-| **Drift & Silent Failure** | Behavioral degradation detection |
-| **System Health** | Operational metrics and resource efficiency |
+---
 
-## Key Concepts
+## v0.2.0-draft — Evidence-Oriented Runtime Telemetry Profile
 
-- **Determinism Grading (D0-D3):** From non-deterministic to fully deterministic
-- **Evaluation Levels (L0-L3):** From unmeasured to governance-grade
-- **AI Agent Operating Model:** 4-gate architecture (Outbound, Merge, Release, Data)
-- **Composite Quality Score (CQS):** Single metric for multi-dimensional behavioral quality
+The v0.2 supplement adds one orthogonal layer to v0.1.1. The principal new requirement is that any **Runtime-Full coverage** claim must declare an `assessment_signal` — the specific channel, metric, integrity check, or composite the row's coverage claim is interpreted against. A Runtime-Full row without `assessment_signal` is a schema violation.
 
-## How It Relates to Existing Frameworks
+| Artefact | Path |
+| --- | --- |
+| v0.2 supplement document | [`standard/phionyx_Evaluation_Standard_v0.2.md`](standard/phionyx_Evaluation_Standard_v0.2.md) |
+| Compliance-Mapping Row Schema | [`schemas/evidence/compliance_mapping_row.schema.json`](schemas/evidence/compliance_mapping_row.schema.json) |
+| Worked Full row | [`examples/evidence/eu_ai_act_article_12_full_row.json`](examples/evidence/eu_ai_act_article_12_full_row.json) |
+| Worked Partial row | [`examples/evidence/eu_ai_act_article_14_partial_row.json`](examples/evidence/eu_ai_act_article_14_partial_row.json) |
+| Worked Gap row | [`examples/evidence/eu_ai_act_article_10_gap_row.json`](examples/evidence/eu_ai_act_article_10_gap_row.json) |
 
-The standard complements — not replaces — existing frameworks:
+The supplement is self-contained: it defines the row format, the schema, and the assessment-signal requirement directly. Worked rows demonstrate Runtime-Full, Runtime-Partial, and Runtime-Gap cases mapped onto EU AI Act articles.
 
-| Framework | Focus | This Standard Adds |
-|-----------|-------|-------------------|
-| NIST AI RMF | Risk management process | Concrete runtime metrics |
-| ISO/IEC 42001 | Management system | Behavioral measurement criteria |
-| EU AI Act | Compliance requirements | Technical evaluation methods |
+### Quick check — validate an evidence row
 
-## Documents
+```bash
+pip install jsonschema
+python3 -c "
+import json, jsonschema
+schema = json.load(open('schemas/evidence/compliance_mapping_row.schema.json'))
+row    = json.load(open('examples/evidence/eu_ai_act_article_12_full_row.json'))
+jsonschema.validate(row, schema)
+print('OK')
+"
+```
 
-| Document | Description |
-|----------|-------------|
-| [Phionyx Evaluation Standard v0.1](standard/phionyx_Evaluation_Standard_v0.1.md) | Full specification |
-| [Sample Evaluation Report](examples/sample-evaluation-report.md) | Worked L2 report on a fictional system — illustrates every output in §8 |
+A Runtime-Full row with `assessment_signal` removed will fail validation.
 
-## Sample Report
+---
 
-A complete L2 evaluation report on a fictional customer-support agent
-(`Helios v2.4`) shows what the standard produces in practice: a
-Behavioral Profile, Risk & Drift Report, Ethics Compliance Report,
-Stability & Health Summary, Determinism Grade, and Certification
-Readiness Status, with a worked CONDITIONAL outcome and concrete
-mitigations.
+## v0.1.1 — Behavioural reliability framework
 
-→ [`examples/sample-evaluation-report.md`](examples/sample-evaluation-report.md)
+v0.1.1 remains the citable public draft and the foundation of v0.2. It defines:
 
-The numbers are illustrative; the structure is exactly what a real
-evaluation produces.
+- **Five evaluation dimensions:** coherence (Φ), entropy and behavioural stability, ethics and governance, drift and silent failure, system health.
+- **L0–L3 evaluation maturity levels:** L0 (Instrumented Observation) → L1 (Diagnostic) → L2 (Assurance) → L3 (Certification-Oriented Evidence Profile).
+- **D0–D3 determinism grades:** D0 (Non-Deterministic) → D1 (Weakly) → D2 (Controlled) → D3 (Fully Deterministic).
+- **AI Agent Operating Model:** envelope-based agent outputs, four governance gates, evidence requirements, workflow traceability.
 
-## Reference Implementation
+See [`standard/phionyx_Evaluation_Standard_v0.1.md`](standard/phionyx_Evaluation_Standard_v0.1.md) for the full v0.1.1 text.
 
-The [Phionyx Core SDK](https://github.com/halvrenofviryel/phionyx-research) (AGPL-3.0, v0.3.0, [DOI 10.5281/zenodo.20027534](https://doi.org/10.5281/zenodo.20027534)) provides a reference implementation — 1,137-test public CI subset, mypy strict-clean across 327 source files, 46-block pipeline (contract v3.8.0), and a v0.3.0 reproducibility pack attached to every release.
+---
 
 ## Citation
 
-```bibtex
-@techreport{abak2026phionyx_standard,
-  author      = {Abak, Ali Toygar},
-  title       = {Phionyx Evaluation Standard},
-  institution = {Phionyx Research},
-  year        = {2026},
-  version     = {0.1.1},
-  doi         = {10.5281/zenodo.20027513},
-  url         = {https://doi.org/10.5281/zenodo.20027513},
-}
+For the released v0.1.1:
+
+```
+Abak, A. T. (2026). Phionyx Evaluation Standard (v0.1.1). Zenodo.
+https://doi.org/10.5281/zenodo.20027514
 ```
 
-The DOI above is the **concept DOI** — it always resolves to the latest archived version. To pin a specific release, use the version DOI in [`CITATION.cff`](CITATION.cff): v0.1.1 is `10.5281/zenodo.20027514`.
+The v0.2 supplement is currently a **draft branch**. Cite v0.1.1 for the canonical reference; reference the v0.2-draft branch only for the Evidence-Oriented Runtime Telemetry Profile material.
 
-## Contributing
+A new versioned Zenodo deposit will be created at v0.2.0 release; `CITATION.cff` is updated at that point.
 
-Feedback, extensions, and translations are welcome. Open an issue or submit a PR.
+---
+
+## Companion artefacts
+
+- **Phionyx Core SDK v0.5.0** — reference runtime implementation. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
+- **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture (currently in moderation). ID added on announcement.
+
+---
 
 ## License
 
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — free to share and adapt with attribution.
-
-**Author:** Ali Toygar Abak ([Phionyx Research](https://phionyx.ai))
+[CC BY-SA 4.0](LICENSE).

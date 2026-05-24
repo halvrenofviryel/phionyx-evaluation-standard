@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://phionyx.ai/schemas/evidence/compliance_mapping_row.schema.json",
+  "title": "Compliance-Mapping Row Schema (v0.1)",
+  "description": "Implementation-neutral JSON Schema (Draft 2020-12) for one row of an agentic-AI governance evidence mapping. Defined and published as part of the Phionyx Evaluation Standard v0.2 supplement (standard/phionyx_Evaluation_Standard_v0.2.md). The schema is intended to be reusable by any agentic-AI runtime that can publish reviewer-runnable evidence; field-level reusability is not required, format-level reusability is.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "framework",
+    "clause",
+    "coverage",
+    "coverage_scope",
+    "mechanisms",
+    "evidence",
+    "deployer_responsibility",
+    "last_verified",
+    "authored_by"
+  ],
+  "_note_assessment_signal": "assessment_signal is required-on-Full per the allOf rule below; for Partial and Gap rows it is permitted to be omitted.",
+  "properties": {
+    "framework": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Source framework's identifier and version (e.g., 'EU AI Act 2024/1689', 'NIST AI RMF 1.0', 'OWASP Agentic AI Threats v1.0', 'ISO/IEC 42001:2023')."
+    },
+    "clause": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Specific clause within the framework (e.g., 'Article 12(1) — Record-keeping', 'GOVERN 1.1', 'A.6.2.2', 'T1 Memory Poisoning'). Free text; no enum because clause naming differs across frameworks."
+    },
+    "coverage": {
+      "type": "string",
+      "enum": ["Full", "Partial", "Gap"],
+      "description": "Runtime-scoped coverage label, read as Runtime-Full / Runtime-Partial / Runtime-Gap. 'Full' means the runtime supplies a complete technical mechanism for the runtime-scoped portion of the framework clause, under the assumptions and deployer programme stated in the row; 'Partial' means the runtime supplies part of the technical mechanism; 'Gap' means the runtime does not supply this mechanism, by design or due to scope. NEVER asserts legal, regulatory, or third-party conformance."
+    },
+    "coverage_scope": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Free-text qualifier explicitly stating the scope of the coverage label (e.g., 'runtime mechanism only; legal obligation requires deployer programme'). Required so that a 'Full' row cannot be read as a certification of the obligation as a whole."
+    },
+    "mechanisms": {
+      "type": "array",
+      "description": "Specific runtime mechanisms (file paths, function names, contract identifiers, schema URIs) that contribute to the clause. Permitted to be empty only on Gap rows.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Reviewer-reproducible artefact identifiers, typically commit-pinned URLs or paths. Permitted to be empty only on Gap rows.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deployer_responsibility": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Non-empty string describing what the deploying organisation must supply for the mapping to hold. Required on every row regardless of coverage. A Full row with an empty deployer_responsibility field is a schema violation."
+    },
+    "last_verified": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO date (YYYY-MM-DD) marking the most recent successful run of the row's reproduction commands."
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Conditions under which the row applies (e.g., 'Single-tenant deployment', 'Phionyx Core SDK >= v0.3.0'). Optional on Gap rows.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "authored_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier of the row's author (organisation, individual handle, or runtime project name) so reviewer disagreements can be attributed precisely."
+    },
+    "assessment_signal": {
+      "type": "string",
+      "minLength": 1,
+      "description": "For Full rows, the specific channel, metric, or composite the row's coverage claim is interpreted against (e.g. 'phi_cognitive', 'capability_budget', 'integrity.canonical_json_hash_chain'). Required on Full rows; permitted to be omitted on Partial or Gap rows. A Full row without assessment_signal is a schema violation."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional object whose contents are framework- or runtime-specific. The top-level row schema sets additionalProperties:false, so anonymous fields outside the required set are rejected; controlled extensions live inside this object, whose internal structure is intentionally not constrained at the protocol level. This pattern allows new fields to evolve without weakening the row format."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "coverage": {
+            "enum": ["Full", "Partial"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mechanisms": {
+            "minItems": 1
+          },
+          "evidence": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "coverage": {
+            "const": "Full"
+          }
+        }
+      },
+      "then": {
+        "required": ["assessment_signal"]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "_comment": "Full (runtime-scoped) row binding EU AI Act Article 12(1) to a Governed Response Envelope. See examples/evidence/eu_ai_act_article_12_full_row.json for the standalone file.",
+      "framework": "EU AI Act 2024/1689",
+      "clause": "Article 12(1) — Record-keeping (automatic event logs)",
+      "coverage": "Full",
+      "coverage_scope": "Full only with respect to the runtime's record-generation mechanism; legal obligation as a whole requires deployer programme.",
+      "mechanisms": [
+        "phionyx_core/contracts/v4/audit_record.py",
+        "phionyx_core/governance/audit_chain.py",
+        "phionyx_core/pipeline/blocks/audit_layer.py"
+      ],
+      "evidence": [
+        "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/examples/governance/audit_chain_demo.py",
+        "https://github.com/halvrenofviryel/phionyx-research/blob/c8fa1f9/CANONICAL_EVIDENCE_TABLE.md#audit-chain-integrity"
+      ],
+      "deployer_responsibility": "The deployer is responsible for log retention, periodic chain-integrity verification, documented procedures linking audit replay to corrective action, post-market monitoring of audit availability, and signing-key management.",
+      "assessment_signal": "governance_envelope.integrity.canonical_json_hash_chain",
+      "last_verified": "2026-04-23",
+      "assumptions": [
+        "Single-tenant deployment",
+        "Phionyx Core SDK >= v0.3.0",
+        "Ed25519 signing key managed by the deployer's KMS"
+      ],
+      "authored_by": "phionyx-research",
+      "extensions": {
+        "phionyx.audit_block_id": "audit_layer",
+        "phionyx.canonical_pipeline_version": "v3.8.0"
+      }
+    },
+    {
+      "_comment": "Gap row: EU AI Act Article 10 has no runtime mechanism by construction. See examples/evidence/eu_ai_act_article_10_gap_row.json.",
+      "framework": "EU AI Act 2024/1689",
+      "clause": "Article 10 — Data and data governance",
+      "coverage": "Gap",
+      "coverage_scope": "Not addressable by the runtime; data-governance obligations attach to training-time and deployment-time data flows outside the runtime's scope.",
+      "mechanisms": [],
+      "evidence": [],
+      "deployer_responsibility": "The deployer is responsible for training-data lineage, dataset documentation, data-protection impact assessments, and any contractual mechanisms with upstream data sources. These cannot be satisfied by the runtime.",
+      "last_verified": "2026-04-23",
+      "assumptions": [],
+      "authored_by": "phionyx-research"
+    }
+  ]
+}

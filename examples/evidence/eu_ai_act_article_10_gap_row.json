@@ -1,0 +1,12 @@
+{
+  "framework": "EU AI Act 2024/1689",
+  "clause": "Article 10 — Data and data governance",
+  "coverage": "Gap",
+  "coverage_scope": "Not addressable by the runtime; data-governance obligations attach to training-time and deployment-time data flows outside the runtime's scope.",
+  "mechanisms": [],
+  "evidence": [],
+  "deployer_responsibility": "The deployer is responsible for training-data lineage, dataset documentation, data-protection impact assessments, and any contractual mechanisms with upstream data sources. These cannot be satisfied by the runtime.",
+  "last_verified": "2026-04-23",
+  "assumptions": [],
+  "authored_by": "phionyx-research"
+}
