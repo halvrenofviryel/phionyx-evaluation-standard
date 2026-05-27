@@ -74,7 +74,7 @@ A new versioned Zenodo deposit will be created at v0.2.0 release; `CITATION.cff`
 
 ## Companion artefacts
 
-- **Phionyx Core SDK v0.5.0** — reference runtime implementation. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
+- **Phionyx Core SDK v0.7.0** — reference runtime implementation. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
 - **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture (currently in moderation). ID added on announcement.
 
 ---
