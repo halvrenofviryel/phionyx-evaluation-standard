@@ -59,10 +59,11 @@ the same turn, the runtime requires an evidence-binding action (e.g. reading the
 source, running the test, checking the state) before the claim may proceed. The
 intent is to forbid "stated, not observed" claims from becoming action.
 
-> Implementation note: in the reference implementation, `require_tool` is a
-> roadmap directive — designed but not yet released. The standard defines it so
-> that conforming runtimes can target it; conformance reports MUST state whether
-> a runtime emits it.
+> Implementation note: in the reference implementation, `require_tool` shipped
+> in the `v0.3.0a1` alpha pre-release; enforcement is **opt-in and default-off**
+> (env-gated) and not in the stable channel. The standard defines it so that
+> conforming runtimes can target it; conformance reports MUST state whether a
+> runtime emits it and whether enforcement is enabled.
 
 ## 3. Maturity ladder (CG-L0 .. CG-L5) and the naming-collision note
 
@@ -109,9 +110,12 @@ runtime can be high on one axis and low on another.
 
 ### 3.3 Reference-implementation status (informative)
 
-The reference runtime (Phionyx) currently targets **CG-L2, with partial CG-L3
-in progress**. It makes no CG-L4 or CG-L5 claim. CG-L3 items are designed but
-not yet released or validated.
+The reference runtime (Phionyx) has reached **CG-L3** in its `v0.3.0a1` alpha
+pre-release: evidence-binding (`require_tool`) and continuity-binding shipped,
+with enforcement **opt-in / default-off** and not in the stable channel (which
+remains **CG-L2**). **CG-L4 is in progress** — the detector-calibration
+machinery is shipped, but its calibration is not yet validated (see §4); the
+runtime therefore makes no CG-L4 *reached* claim and no CG-L5 claim.
 
 ## 4. Detector-calibration profile
 
@@ -134,18 +138,22 @@ For each detector, over a labelled dataset, record:
 
 ### Honest status of the reference implementation
 
-In the reference implementation, detector calibration is **tested, not
-validated**: there is no labelled dataset yet, so **ECE is currently
-unmeasured**. The reference runtime therefore makes no CG-L4 claim. Conformance
-reports MUST state whether calibration has been measured, and if so, the dataset
-and the resulting ECE.
+In the reference implementation, the detector-calibration machinery (a
+calibration ledger that records each detector call as a measured sensor reading)
+is **shipped**, but calibration is **tested, not yet validated**: the labelled
+measurement window has not opened, so **ECE is currently unmeasured**. The
+reference runtime therefore places CG-L4 **in progress**, not reached, and makes
+no calibrated-governance claim. Conformance reports MUST state whether
+calibration has been measured, and if so, the dataset and the resulting ECE.
 
 ## 5. Continuity-binding profile
 
 A measure of whether prior established context (constraints, prior findings,
 the prior plan) was **bound into** the current plan or action — as opposed to
-retrieved-but-not-bound. This is a CG-L3 capability. Conformance reports MUST
-state whether the runtime measures it.
+retrieved-but-not-bound. This is a CG-L3 capability. In the reference
+implementation it shipped in the `v0.3.0a1` alpha pre-release (enforcement
+opt-in / default-off). Conformance reports MUST state whether the runtime
+measures it.
 
 ## 6. Replay terminology
 
@@ -187,4 +195,9 @@ evaluation.
 - v0.3-draft — Noisy-Measurement Claim Governance Profile. Draft layer added on
   top of v0.1.1 and v0.2 without replacing them. No Zenodo DOI assigned (draft).
   CG-L0..CG-L5 ladder named with the `CG-` prefix to coexist with the standard's
-  existing evaluation L0–L3 and determinism D0–D3 ladders. For founder review.
+  existing evaluation L0–L3 and determinism D0–D3 ladders.
+  - Reference-implementation position updated 2026-05-29: CG-L3 **reached** in the
+    `phionyx-pipeline-mcp` `v0.3.0a1` alpha pre-release (evidence-binding +
+    continuity-binding shipped; enforcement opt-in/default-off; stable channel
+    remains CG-L2). CG-L4 **in progress** (calibration machinery shipped; ECE not
+    yet validated). No CG-L4-reached or CG-L5 claim. "Iddia ≤ Kanıt."
