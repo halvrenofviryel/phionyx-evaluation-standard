@@ -1,3 +1,20 @@
+## [v0.3-draft] — 2026-05-29
+
+The **Noisy-Measurement Claim Governance Profile** — a draft layer profiling how a runtime governs the noisy-output -> operational-fact boundary. Does not replace v0.1.1 or v0.2.
+
+### Added
+- **Claim-Governance maturity ladder `CG-L0..CG-L5`** at `standard/phionyx_Evaluation_Standard_v0.3-draft.md` — a fourth axis (`CG-` prefixed to avoid colliding with evaluation `L0-L3` and determinism `D0-D3`).
+- **Directive set** including `require_tool` (evidence-binding) and the **continuity-binding** and **detector-calibration** profiles.
+- **Worked L2 evaluation report** at `examples/sample-evaluation-report.md` — a complete report for a fictional system with a CONDITIONAL outcome (illustrative numbers).
+- README section documenting the v0.3-draft layer.
+
+### Reference-implementation position (honest)
+- CG-L3 **reached** in `phionyx-pipeline-mcp` `v0.3.0a1` alpha pre-release (`require_tool` + continuity binding shipped; enforcement opt-in / default-off; stable channel remains CG-L2).
+- CG-L4 **in progress** (calibration machinery shipped; ECE not yet validated). No CG-L4-reached or CG-L5 claim.
+
+### Note
+- No Zenodo DOI assigned to this draft layer; v0.1.1 (DOI 10.5281/zenodo.20027514) remains the canonical citation.
+
 ## [v0.2.0] — 2026-05-24
 
 The **Evidence-Oriented Runtime Telemetry Profile** — a self-contained supplement to v0.1.1. The v0.1.1 standard document and Zenodo deposit (DOI 10.5281/zenodo.20027514) remain unchanged and citable.
