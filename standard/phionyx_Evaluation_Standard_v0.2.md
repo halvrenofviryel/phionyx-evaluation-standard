@@ -1,4 +1,4 @@
-# Phionyx Evaluation Standard — v0.2 Supplement
+# Phionyx Open Evaluation Profile — v0.2 Supplement
 
 **Title:** Evidence-Oriented Runtime Telemetry Profile
 **Version:** 0.2.0
@@ -18,6 +18,16 @@ v0.2 adds one orthogonal layer: an **Evidence-Oriented Runtime Telemetry Profile
 The v0.2 profile is **vendor-neutral**. It does not assume the Phionyx Core runtime; it specifies a row format that any agentic-AI runtime can adopt to publish governance-evidence rows in a reviewer-reproducible shape.
 
 This supplement does not certify AI systems. It defines an evidence format that can support external review, assurance, and standards alignment.
+
+---
+
+## Neutrality & Conflict of Interest
+
+This profile is authored by the Phionyx project, which also maintains the Phionyx reference implementation. The conformance criteria defined here are written to be implementable by **any** agentic-AI runtime, independent of Phionyx; nothing in the normative text requires Phionyx Core or any Phionyx-specific mechanism.
+
+Where Phionyx mechanisms, signals, or grades are mentioned, they are **self-assessed by the author** and serve only as an informative reference implementation. Independent third-party validation of any Phionyx grade reported here is **pending**. The reference implementation is **informative, not normative**: conformance to this profile is defined solely by this profile's normative text, not by any implementation — including the author's own.
+
+A reviewer who disagrees with a claim made under this profile can publish a counter-row in the same schema; the disagreement then enters the public record as structurally as the original claim.
 
 ---
 
@@ -58,7 +68,7 @@ The schema enforces the requirement with a conditional `allOf` rule (Draft 2020-
 
 ### 2.1 Assessment-signal forms
 
-The `assessment_signal` value is intentionally not constrained to a fixed enum; valid forms are runtime-shaped. The five trajectory-failure fixtures the profile supports use four distinct assessment signals:
+The `assessment_signal` value is intentionally not constrained to a fixed enum; valid forms are runtime-shaped. In the Phionyx reference implementation, the five trajectory-failure fixtures the profile supports use four distinct assessment signals:
 
 | Fixture | Failure mode | Assessment signal |
 | --- | --- | --- |
@@ -68,7 +78,7 @@ The `assessment_signal` value is intentionally not constrained to a fixed enum; 
 | Agent drift | Retry-loop + hallucinated completion | `phi_cognitive` + `claim_state_consistency` extension |
 | Audit discontinuity | Audit-chain gap on record deletion | `governance_envelope.integrity.canonical_json_hash_chain` |
 
-Five fixtures, four distinct signals, one shared row schema. This distribution is the empirical motivation for placing the assessment-signal choice on the row schema rather than in runtime documentation: different failure modes require different assessment signals, so the choice belongs at the row level where reviewers can see and contest it.
+Five fixtures, four distinct signals, one shared row schema. This distribution is the empirical motivation for placing the assessment-signal choice on the row schema rather than in runtime documentation: different failure modes require different assessment signals, so the choice belongs at the row level where reviewers can see and contest it. (The specific signal names above are properties of the reference implementation, not of the normative row schema.)
 
 ### 2.2 What the schema validates and what it does not
 
@@ -131,7 +141,7 @@ v0.1.1 introduces a Composite Quality Score (CQS) as a summary indicator of mult
 
 > **Composite Quality Score is a summary indicator, not an assessment signal by default.** Any governance claim based on CQS MUST also declare the underlying `assessment_signal`(s) the claim is actually being assessed against. Composite-only scoring SHOULD NOT be used for trajectory-failure claims where channel masking is possible.
 
-The structural argument is shown by the NPC coherence-drift reference trace published at [phionyx.ai/narrative-coherence](https://phionyx.ai/narrative-coherence): on a four-turn drift trajectory, the cognitive channel falls cleanly from 0.59 to 0.09 while the physical channel rises with arousal from 1.38 to 2.88; the composite scalar stays roughly flat in `[0.69, 0.79]`. A protocol that classified on the composite would not flag this trajectory as drift. A `Full` row that declared its `assessment_signal` as `phi_total` for this clause would be wrong by construction; a row that declared `phi_cognitive` would be correct.
+The structural argument is shown by the NPC coherence-drift reference trace published at [phionyx.ai/narrative-coherence](https://phionyx.ai/narrative-coherence): on a four-turn drift trajectory, the cognitive channel falls cleanly from 0.59 to 0.09 while the physical channel rises with arousal from 1.38 to 2.88; the composite scalar stays roughly flat in `[0.69, 0.79]`. A protocol that classified on the composite would not flag this trajectory as drift. In the reference implementation, a `Full` row that declared its `assessment_signal` as `phi_total` for this clause would be wrong by construction; a row that declared `phi_cognitive` would be correct.
 
 This clarification does not deprecate CQS. It scopes its use: CQS remains a useful programme-level summary; it is not a substitute for the per-row assessment-signal declaration.
 
