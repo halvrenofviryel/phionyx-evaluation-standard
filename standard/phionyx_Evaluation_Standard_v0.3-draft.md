@@ -195,4 +195,4 @@ evaluation.
     `phionyx-pipeline-mcp` `v0.3.0a1` alpha pre-release (evidence-binding +
     continuity-binding shipped; enforcement opt-in/default-off; stable channel
     remains CG-L2). CG-L4 **in progress** (calibration machinery shipped; ECE not
-    yet validated). No CG-L4-reached or CG-L5 claim. "Iddia ≤ Kanıt."
+    yet validated). No CG-L4-reached or CG-L5 claim. "claim ≤ evidence."
