@@ -1,4 +1,4 @@
-# Phionyx Evaluation Standard
+# Phionyx Open Evaluation Profile
 
 > Vendor-independent proposal for publishing reviewer-runnable governance evidence for agentic AI runtimes.
 
@@ -6,9 +6,11 @@
 
 > The DOI badge above is the **concept DOI** (`10.5281/zenodo.20027513`) — it always resolves to the latest archived version (currently v0.2.0). The per-version DOIs are listed in [Citation](#citation).
 
-The **Phionyx Evaluation Standard** specifies how an agentic AI runtime can publish governance evidence in a form that is reviewer-reproducible, vendor-neutral, and scoped honestly between runtime mechanism and deployer responsibility.
+The **Phionyx Open Evaluation Profile** specifies how an agentic AI runtime can publish governance evidence in a form that is reviewer-reproducible, vendor-neutral, and scoped honestly between runtime mechanism and deployer responsibility.
 
-**Where this sits.** This repository is the **Standard** — a vendor-neutral specification. It does not ship a runtime. It defines the scales that any runtime can be measured against:
+> **Neutrality & self-assessed grades.** This profile is authored by the Phionyx project, which also maintains the reference implementation. Any Phionyx grades reported here are **self-assessed** and independent third-party validation is pending. See [Neutrality & Conflict of Interest](#neutrality--conflict-of-interest).
+
+**Where this sits.** This repository is the **Profile** — a vendor-neutral specification. It does not ship a runtime. It defines the scales that any runtime can be measured against:
 
 - **L0–L3** — evaluation maturity (released, v0.1.1 / v0.2.0).
 - **D0–D3** — determinism grades (released, v0.1.1 / v0.2.0).
@@ -16,13 +18,24 @@ The **Phionyx Evaluation Standard** specifies how an agentic AI runtime can publ
 
 The CG-L0…CG-L5 ladder rates the **self-governance gate** `phionyx-pipeline-mcp` (an MCP server, separate package), not the engine. The deterministic engine `phionyx-core` (the SDK) is the **reference implementation** that scores **L3 + D3** on the released axes; it is not itself claim-governance-rated. See [Companion artefacts](#companion-artefacts).
 
-The standard is published in layers:
+The profile is published in layers:
 
-- **v0.1.1 (released, citable):** five evaluation dimensions — coherence (Φ), entropy and behavioural stability, ethics and governance, drift and silent failure, system health — together with the L0–L3 evaluation maturity levels and the D0–D3 determinism grades.
+- **v0.1.1 (released, citable):** five evaluation dimensions — coherence, entropy and behavioural stability, ethics and governance, drift and silent failure, system health — together with the L0–L3 evaluation maturity levels and the D0–D3 determinism grades.
 - **v0.2.0 (released, citable):** the **Evidence-Oriented Runtime Telemetry Profile** — runtime-scoped coverage labels (`Full / Partial / Gap`), the `assessment_signal` schema requirement, the Compliance-Mapping Row Schema (JSON Schema Draft 2020-12), and worked evidence-row examples.
 - **v0.3 (draft, unreleased):** the **Noisy-Measurement Claim Governance Profile** — the `CG-L0…CG-L5` claim-governance maturity ladder, the `require_tool` evidence-binding directive, continuity binding, and a detector-calibration profile. A distinct fourth axis from the L0–L3 maturity and D0–D3 determinism ladders. No v0.3 tag or Zenodo deposit yet.
 
 > This repository does not certify AI systems. It defines evidence formats and evaluation profiles that can support external review, assurance, and standards alignment.
+
+---
+
+## Neutrality & Conflict of Interest
+
+This profile is authored by the Phionyx project, which also maintains the reference implementation (`phionyx-core`). To keep the specification usable by anyone, the following neutrality conditions hold:
+
+- **Implementable by any runtime.** The criteria in this profile are defined so they can be implemented by *any* agentic AI runtime, independent of Phionyx. Nothing in the normative text requires Phionyx-specific mechanisms.
+- **Reference implementation is informative, not normative.** `phionyx-core` and `phionyx-pipeline-mcp` are provided as informative reference implementations. They illustrate one way to satisfy the profile; they do not define conformance.
+- **Conformance is defined by the profile text.** Conformance is determined by this profile's normative text, not by any implementation. A different runtime that satisfies the normative criteria conforms regardless of how Phionyx implements them.
+- **Self-assessed grades, pending independent validation.** Any Phionyx grades reported in this repository (e.g. `phionyx-core` at L3 + D3, `phionyx-pipeline-mcp` at CG-L2 / CG-L3) are **self-assessed by the author**. Independent third-party validation is pending. They should be read as the author's own assessment, not as certified or externally audited results.
 
 ---
 
@@ -80,10 +93,12 @@ See [`standard/phionyx_Evaluation_Standard_v0.3-draft.md`](standard/phionyx_Eval
 
 v0.1.1 remains a citable public release and the foundation of v0.2.0. It defines:
 
-- **Five evaluation dimensions:** coherence (Φ), entropy and behavioural stability, ethics and governance, drift and silent failure, system health.
+- **Five evaluation dimensions:** coherence, entropy and behavioural stability, ethics and governance, drift and silent failure, system health.
 - **L0–L3 evaluation maturity levels:** L0 (Instrumented Observation) → L1 (Diagnostic) → L2 (Assurance) → L3 (Certification-Oriented Evidence Profile).
 - **D0–D3 determinism grades:** D0 (Non-Deterministic) → D1 (Weakly) → D2 (Controlled) → D3 (Fully Deterministic).
 - **AI Agent Operating Model:** envelope-based agent outputs, four governance gates, evidence requirements, workflow traceability.
+
+> **Reference-implementation note (informative).** The *Coherence* dimension is defined by its property — behavioural self-consistency of the runtime under evaluation — and is mechanism-neutral. In the Phionyx reference implementation, Coherence is computed via a Phi (Φ) score; any runtime may satisfy the dimension by a different mechanism.
 
 See [`standard/phionyx_Evaluation_Standard_v0.1.md`](standard/phionyx_Evaluation_Standard_v0.1.md) for the full v0.1.1 text.
 
@@ -112,13 +127,13 @@ Abak, A. T. (2026). Phionyx Evaluation Standard (v0.1.1). Zenodo.
 https://doi.org/10.5281/zenodo.20027514
 ```
 
-To cite the standard independent of version, use the concept DOI `10.5281/zenodo.20027513`. `CITATION.cff` tracks the latest released version.
+To cite this profile independent of version, use the concept DOI `10.5281/zenodo.20027513`. `CITATION.cff` tracks the latest released version.
 
 ---
 
 ## Companion artefacts
 
-- **`phionyx-core` (the SDK / engine), v0.7.2** — the deterministic reference runtime; scores **L3 + D3** on this Standard's released axes. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
+- **`phionyx-core` (the SDK / engine), v0.7.2** — the deterministic reference runtime; scores **L3 + D3** (self-assessed) on this Profile's released axes. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
 - **`phionyx-pipeline-mcp` (the gate)** — the self-governance MCP server the **CG-L0…CG-L5** ladder rates: stable `v0.2.0` = **CG-L2**; alpha `v0.3.0a1` = **CG-L3** (opt-in / default-off). [`halvrenofviryel/phionyx-pipeline-mcp`](https://github.com/halvrenofviryel/phionyx-pipeline-mcp).
 - **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture (currently in moderation). ID added on announcement.
 
