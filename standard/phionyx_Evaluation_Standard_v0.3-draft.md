@@ -105,13 +105,17 @@ runtime can be high on one axis and low on another.
 | CG-L2 | Governed claims | Claims mapped, checked against knowledge boundary + epistemic signals, directive (`pass/hedge/regenerate/block`) emitted, signed record, record-bound replay. |
 | CG-L3 | Evidence-binding required | Runtime can require evidence-binding (`require_tool`) and measure whether prior context was bound (continuity binding). |
 | CG-L4 | Calibrated governance | Detectors treated as sensors; their calibration measured over labelled data (e.g. ECE). |
-| CG-L5 | Causally-governed | Directives are selected by causal reasoning over predicted effects, evaluated against live telemetry. Inherits record-bound replay from CG-L2/L3; the new capability is causal selection. (Live deterministic re-execution is **not** part of this rung — see §6; determinism here is record-bound reproducibility.) |
+| CG-L5 | Causally-governed | Directives are selected by causal reasoning over predicted effects, evaluated against live telemetry. Inherits record-bound replay from CG-L2/L3; the new capability is causal selection. Determinism here is record-bound reproducibility. |
 
 ### 3.3 Reference-implementation status (informative)
 
-The reference runtime (Phionyx) currently targets **CG-L2, with partial CG-L3
-in progress**. It makes no CG-L4 or CG-L5 claim. CG-L3 items are designed but
-not yet released or validated.
+The reference runtime (Phionyx) has **reached CG-L3** in its `v0.3.0a1` alpha pre-release:
+evidence-binding (`require_tool`) and continuity-binding are shipped (opt-in / default-off;
+the stable channel remains **CG-L2**). **CG-L4 is in progress** — the detector-calibration
+machinery is shipped and wired to the gate, but its calibration (ECE) is not yet validated
+(§4). **CG-L5 is in progress** — a causal-reasoning engine exists in the runtime; causal
+directive-selection over predicted effects is not yet wired into governance. Per İddia ≤
+Kanıt, each level reports exactly what is shipped versus pending.
 
 ## 4. Detector-calibration profile
 
@@ -149,17 +153,11 @@ state whether the runtime measures it.
 
 ## 6. Replay terminology
 
-The standard defines two distinct meanings of "replay" and requires runtimes to
-state which they provide:
-
-| Term | Definition |
-|------|------------|
-| **Live (deterministic) re-execution** | Re-running the system from the same inputs reproduces the same path/outputs by executing the model and runtime again. Requires a deterministic, pinned substrate. |
-| **Record-bound replay** | Reconstructing the governance decision from the signed, hash-chained audit record. Does not re-execute the model. |
-
-A conforming runtime MUST NOT describe record-bound replay as live
-determinism. **The reference implementation (Phionyx) targets record-bound
-replay**, not live deterministic re-execution.
+"Replay" in this profile means **record-bound replay**: reconstructing the governance
+decision from the signed, hash-chained audit record. The recorded parameters — including
+the recorded time value (`dt`) — are part of the record, so the same record yields the same
+decision. It does not re-run the model. A conforming runtime MUST reproduce decisions from
+the record.
 
 ## 7. Benchmark format (standard-defined, runner external)
 
