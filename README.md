@@ -14,7 +14,7 @@ The **Phionyx Evaluation Standard** specifies how an agentic AI runtime can publ
 - **D0–D3** — determinism grades (released, v0.1.1 / v0.2.0).
 - **CG-L0…CG-L5** — claim-governance maturity (the **v0.3 layer, currently a DRAFT** — no v0.3 tag/release).
 
-The CG-L0…CG-L5 ladder rates the **self-governance gate** `phionyx-pipeline-mcp` (an MCP server, separate package), not the engine. The deterministic-cognition engine `phionyx-core` (the SDK) is the **reference implementation** that scores **L3 + D3** on the released axes; it is not itself claim-governance-rated. See [Companion artefacts](#companion-artefacts).
+The CG-L0…CG-L5 ladder rates the **self-governance gate** `phionyx-pipeline-mcp` (an MCP server, separate package), not the engine. The deterministic engine `phionyx-core` (the SDK) is the **reference implementation** that scores **L3 + D3** on the released axes; it is not itself claim-governance-rated. See [Companion artefacts](#companion-artefacts).
 
 The standard is published in layers:
 
@@ -118,7 +118,7 @@ To cite the standard independent of version, use the concept DOI `10.5281/zenodo
 
 ## Companion artefacts
 
-- **`phionyx-core` (the SDK / engine), v0.7.2** — the deterministic-cognition reference runtime; scores **L3 + D3** on this Standard's released axes. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
+- **`phionyx-core` (the SDK / engine), v0.7.2** — the deterministic reference runtime; scores **L3 + D3** on this Standard's released axes. [`halvrenofviryel/phionyx-research`](https://github.com/halvrenofviryel/phionyx-research). Zenodo: [`10.5281/zenodo.20027534`](https://doi.org/10.5281/zenodo.20027534).
 - **`phionyx-pipeline-mcp` (the gate)** — the self-governance MCP server the **CG-L0…CG-L5** ladder rates: stable `v0.2.0` = **CG-L2**; alpha `v0.3.0a1` = **CG-L3** (opt-in / default-off). [`halvrenofviryel/phionyx-pipeline-mcp`](https://github.com/halvrenofviryel/phionyx-pipeline-mcp).
 - **arXiv Paper 1** (Abak 2026) — Phionyx runtime architecture (currently in moderation). ID added on announcement.
 
