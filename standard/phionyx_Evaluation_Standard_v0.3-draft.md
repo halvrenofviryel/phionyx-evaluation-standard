@@ -1,9 +1,9 @@
 # Noisy-Measurement Claim Governance Profile
 
-**Phionyx Evaluation Standard — v0.3-draft layer**
+**Phionyx Open Evaluation Profile — v0.3-draft layer**
 
 > **Status: DRAFT.** This is a new draft layer (v0.3-draft) added on top of the
-> existing standard. It **does not replace** v0.1.1 (citable baseline) or v0.2
+> existing profile. It **does not replace** v0.1.1 (citable baseline) or v0.2
 > (Evidence-Oriented Runtime Telemetry); those remain untouched.
 >
 > **No Zenodo DOI** is assigned to this draft layer. A DOI is minted only when
@@ -12,6 +12,22 @@
 > This repository does **not** certify AI systems. This profile defines a model
 > for evaluating how a runtime governs noisy model outputs; it is not a
 > certification.
+
+## Neutrality & Conflict of Interest
+
+This profile is authored by the Phionyx project, which also maintains the
+reference implementation of a conforming runtime. To keep that dual role
+honest:
+
+- The criteria in this profile are defined to be implementable by **any**
+  runtime, independent of Phionyx. Conformance is defined by this profile's
+  normative text, not by any particular implementation.
+- The reference implementation is **informative, not normative**. Where this
+  document describes what the Phionyx runtime ships, that description illustrates
+  the criteria; it does not define them.
+- Any Phionyx grades or maturity levels reported in this document are
+  **self-assessed by the author**. Independent third-party validation is
+  **pending**.
 
 ## Purpose
 
@@ -53,7 +69,7 @@ is:
 | `block` | The claim is not permitted to become action. |
 | `require_tool` | A factual or external claim asserted **without same-turn evidence** must bind evidence (via a tool action) **before** it is permitted to become action. |
 
-**`require_tool` — full definition (for the standard):** when a candidate claim
+**`require_tool` — full definition (for this profile):** when a candidate claim
 concerns a fact or external state, and no evidence supporting it was produced in
 the same turn, the runtime requires an evidence-binding action (e.g. reading the
 source, running the test, checking the state) before the claim may proceed. The
@@ -61,7 +77,7 @@ intent is to forbid "stated, not observed" claims from becoming action.
 
 > Implementation note: in the reference implementation, `require_tool` shipped
 > in the `v0.3.0a1` alpha pre-release; enforcement is **opt-in and default-off**
-> (env-gated) and not in the stable channel. The standard defines it so that
+> (env-gated) and not in the stable channel. The profile defines it so that
 > conforming runtimes can target it; conformance reports MUST state whether a
 > runtime emits it and whether enforcement is enabled.
 
@@ -69,7 +85,7 @@ intent is to forbid "stated, not observed" claims from becoming action.
 
 ### 3.1 Naming-collision note (important)
 
-This standard **already** uses two short ladders:
+This profile **already** uses two short ladders:
 
 - **Evaluation-evidence maturity: L0–L3** (from v0.1.1) — how much evidence
   backs an *evaluation result*.
@@ -79,7 +95,7 @@ This standard **already** uses two short ladders:
 To avoid a clash with those existing ladders, the claim-governance ladder
 introduced in this profile is named **CG-L0 .. CG-L5** (Claim-Governance
 maturity). The `CG-` prefix is mandatory in this profile precisely so that
-`CG-L2` is never confused with the standard's evaluation `L2` or determinism
+`CG-L2` is never confused with the evaluation `L2` or determinism
 `D2`.
 
 **Cross-ladder mapping (informative, not equivalence):**
@@ -163,9 +179,9 @@ the recorded time value (`dt`) — are part of the record, so the same record yi
 decision. It does not re-run the model. A conforming runtime MUST reproduce decisions from
 the record.
 
-## 7. Benchmark format (standard-defined, runner external)
+## 7. Benchmark format (profile-defined, runner external)
 
-The standard defines the **case/label schema** for evaluating claim governance;
+The profile defines the **case/label schema** for evaluating claim governance;
 the reference research repository provides the runner. A benchmark case
 specifies: a scenario, a raw claim, the evidence available, the expected
 governance result, and the expected directive. Calibration of any time-decay
@@ -188,8 +204,8 @@ evaluation.
 
 - v0.3-draft — Noisy-Measurement Claim Governance Profile. Draft layer added on
   top of v0.1.1 and v0.2 without replacing them. No Zenodo DOI assigned (draft).
-  CG-L0..CG-L5 ladder named with the `CG-` prefix to coexist with the standard's
-  existing evaluation L0–L3 and determinism D0–D3 ladders.
+  CG-L0..CG-L5 ladder named with the `CG-` prefix to coexist with the existing
+  evaluation L0–L3 and determinism D0–D3 ladders.
   - Reference-implementation position updated 2026-05-29: CG-L3 **reached** in the
     `phionyx-pipeline-mcp` `v0.3.0a1` alpha pre-release (evidence-binding +
     continuity-binding shipped; enforcement opt-in/default-off; stable channel
