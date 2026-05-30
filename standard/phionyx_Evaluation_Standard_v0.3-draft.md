@@ -115,8 +115,7 @@ evidence-binding (`require_tool`) and continuity-binding are shipped (opt-in / d
 the stable channel remains **CG-L2**). **CG-L4 is in progress** — the detector-calibration
 machinery is shipped and wired to the gate, but its calibration (ECE) is not yet validated
 (§4). **CG-L5 is in progress** — a causal-reasoning engine exists in the runtime; causal
-directive-selection over predicted effects is not yet wired into governance. Per İddia ≤
-Kanıt, each level reports exactly what is shipped versus pending.
+directive-selection over predicted effects is not yet wired into governance. In keeping with the claim ≤ evidence principle, each level reports exactly what is shipped versus pending.
 
 ## 4. Detector-calibration profile
 
