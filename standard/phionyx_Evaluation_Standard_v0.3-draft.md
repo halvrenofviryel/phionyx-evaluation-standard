@@ -90,7 +90,7 @@ maturity). The `CG-` prefix is mandatory in this profile precisely so that
 | CG-L2 Governed claims | evidence L2 (claim-level evidence) | D1–D2 (record-bound replay) |
 | CG-L3 Evidence-binding required | evidence L3 (binding required) | D2 (record-bound, integrity-checked) |
 | CG-L4 Calibrated governance | evidence L3 + measured detector calibration | D2–D3 |
-| CG-L5 Causal / live-deterministic | beyond current evidence ladder | D3 (live determinism) |
+| CG-L5 Causally-governed | beyond current evidence ladder | D2–D3 (record-bound reproducibility) |
 
 The mapping is informative. CG levels measure *claim governance*; the L0–L3 and
 D0–D3 ladders measure *evaluation evidence* and *determinism* respectively. A
@@ -105,7 +105,7 @@ runtime can be high on one axis and low on another.
 | CG-L2 | Governed claims | Claims mapped, checked against knowledge boundary + epistemic signals, directive (`pass/hedge/regenerate/block`) emitted, signed record, record-bound replay. |
 | CG-L3 | Evidence-binding required | Runtime can require evidence-binding (`require_tool`) and measure whether prior context was bound (continuity binding). |
 | CG-L4 | Calibrated governance | Detectors treated as sensors; their calibration measured over labelled data (e.g. ECE). |
-| CG-L5 | Causal / live-deterministic | Governance reasons over causal structure; live deterministic re-execution. |
+| CG-L5 | Causally-governed | Directives are selected by causal reasoning over predicted effects, evaluated against live telemetry. Inherits record-bound replay from CG-L2/L3; the new capability is causal selection. (Live deterministic re-execution is **not** part of this rung — see §6; determinism here is record-bound reproducibility.) |
 
 ### 3.3 Reference-implementation status (informative)
 
