@@ -1,6 +1,6 @@
-# Phionyx Evaluation Standard v0.1
+# Phionyx Open Evaluation Profile v0.1
 
-**Status:** Draft – Public Reference Proposal  
+**Status:** Draft – Public Reference Proposal
 **Version:** 0.1.1 (Errata)
 **Date:** January 2026
 **Last Updated:** 2026-03-20
@@ -9,15 +9,15 @@
 
 ## Purpose
 
-This document defines Phionyx Evaluation Standard v0.1, a **vendor-independent, model-agnostic, system-level evaluation framework** designed to assess the behavioral reliability, safety, coherence, determinism, and long-term stability of AI systems.
+This document defines the Phionyx Open Evaluation Profile v0.1, a **vendor-independent, model-agnostic, system-level evaluation framework** designed to assess the behavioral reliability, safety, coherence, determinism, and long-term stability of AI systems.
 
 Phionyx is not positioned as an AI model, application, or benchmark dataset. It is a **reference evaluation infrastructure** intended to become a common baseline for comparing, certifying, and governing AI systems across industries.
 
-This standard was derived from and validated against deterministic cognitive architectures such as Echoism, while being intentionally designed to remain architecture-agnostic and applicable to all AI systems capable of exposing execution traces.
+This profile was derived from and validated against deterministic cognitive architectures, while being intentionally designed to remain architecture-agnostic and applicable to all AI systems capable of exposing execution traces.
 
 ### Publication as Public Reference Proposal
 
-This standard is **suitable for publication** as a public reference proposal and **publication is recommended**. Advantages of publishing include:
+This profile is **suitable for publication** as a public reference proposal and **publication is recommended**. Advantages of publishing include:
 
 - **Adoption:** Public reference proposals enable third-party adoption without vendor lock-in.
 - **Positioning:** The document is explicitly **vendor-independent, model-agnostic, and system-level**; publication reinforces this positioning and supports use by regulators, enterprises, and research bodies.
@@ -27,10 +27,10 @@ This standard is **suitable for publication** as a public reference proposal and
 
 ## Table of Contents
 
-1. [Scope of the Standard](#1-scope-of-the-standard)
+1. [Scope of the Profile](#1-scope-of-the-profile)
 2. [Core Evaluation Philosophy](#2-core-evaluation-philosophy)
 3. [Evaluation Dimensions](#3-evaluation-dimensions)
-   - 3.1 [Coherence (Phi / Cognitive Resonance)](#31-coherence-phi--cognitive-resonance)
+   - 3.1 [Coherence](#31-coherence)
    - 3.2 [Entropy & Behavioral Stability](#32-entropy--behavioral-stability)
    - 3.3 [Ethical & Governance Compliance](#33-ethical--governance-compliance)
    - 3.4 [Drift & Silent Failure Detection](#34-drift--silent-failure-detection)
@@ -41,8 +41,8 @@ This standard is **suitable for publication** as a public reference proposal and
 6. [Telemetry, Traceability & Auditability](#6-telemetry-traceability--auditability)
 7. [Human-in-the-Loop Integration](#7-human-in-the-loop-integration)
 8. [Evaluation Outputs](#8-evaluation-outputs)
-9. [What This Standard Enables](#9-what-this-standard-enables)
-10. [What This Standard Is Not](#10-what-this-standard-is-not)
+9. [What This Profile Enables](#9-what-this-profile-enables)
+10. [What This Profile Is Not](#10-what-this-profile-is-not)
 11. [Reference Implementation: Phionyx Product Portfolio](#11-reference-implementation-phionyx-product-portfolio)
 12. [AI Agent Operating Model](#12-ai-agent-operating-model)
    - 12.1 [Scope](#121-scope)
@@ -50,16 +50,17 @@ This standard is **suitable for publication** as a public reference proposal and
    - 12.3 [Governance Node: 4 Gate Architecture](#123-governance-node-4-gate-architecture)
    - 12.4 [Evidence Requirement](#124-evidence-requirement)
    - 12.5 [Agent Workflow Traceability](#125-agent-workflow-traceability)
-13. [Strategic Positioning](#13-strategic-positioning)
-14. [Cross-References](#14-cross-references)
-15. [Version Control](#15-version-control)
-16. [License](#license)
+13. [Neutrality & Conflict of Interest](#neutrality--conflict-of-interest)
+14. [Strategic Positioning](#13-strategic-positioning)
+15. [Cross-References](#14-cross-references)
+16. [Version Control](#15-version-control)
+17. [License](#license)
 
 ---
 
-## 1. Scope of the Standard
+## 1. Scope of the Profile
 
-This standard applies to:
+This profile applies to:
 
 - **Large Language Models (LLMs):** Foundation models, fine-tuned models, instruction-tuned models
 - **Retrieval-Augmented Generation (RAG) systems:** Systems combining retrieval mechanisms with generative models
@@ -68,10 +69,10 @@ This standard applies to:
 - **Embodied and interactive AI:** Systems deployed in games, simulations, educational platforms, and virtual environments
 - **Enterprise AI systems:** Production systems deployed in enterprise environments with regulatory requirements
 - **Regulated and safety-critical AI systems:** Systems subject to regulatory oversight (healthcare, finance, transportation, etc.)
-- **Deterministic cognitive architectures:** Systems implementing deterministic state evolution and cognitive control (e.g., Echoism-class architectures)
+- **Deterministic cognitive architectures:** Systems implementing deterministic state evolution and cognitive control
 - **Semantic time-based memory systems:** Systems implementing physics-based memory management with semantic time vectors
 
-The standard explicitly avoids task-specific accuracy scoring and single-metric optimization. It focuses on behavioral reliability, long-term stability, and system-level properties rather than task performance metrics.
+The profile explicitly avoids task-specific accuracy scoring and single-metric optimization. It focuses on behavioral reliability, long-term stability, and system-level properties rather than task performance metrics.
 
 ---
 
@@ -81,7 +82,7 @@ Traditional AI evaluation asks:
 
 **"Is the output correct?"**
 
-Phionyx Evaluation Standard asks:
+The Phionyx Open Evaluation Profile asks:
 
 **"How did the system behave over time, under uncertainty, and under constraint?"**
 
@@ -102,7 +103,7 @@ Evaluation is based on behavioral trajectories, not isolated responses.
 
 Phionyx evaluates AI systems across five orthogonal and mandatory dimensions.
 
-### 3.1 Coherence (Phi / Cognitive Resonance)
+### 3.1 Coherence
 
 Measures internal semantic and contextual consistency across time.
 
@@ -112,8 +113,14 @@ Measures internal semantic and contextual consistency across time.
 - Alignment consistency across interaction windows
 
 **Outputs:**
-- Phi Score (normalized) - also referred to as Cognitive Resonance Score
+- Coherence Score (normalized)
 - Coherence degradation curve
+
+> **Informative note:** In the Phionyx reference implementation, the Coherence
+> Score is computed via a Phi (Cognitive Resonance) mechanism. This is an
+> implementation choice; the normative dimension requires only a normalized
+> measure of internal semantic and contextual consistency and may be computed
+> by any equivalent mechanism.
 
 ### 3.2 Entropy & Behavioral Stability
 
@@ -177,12 +184,12 @@ Measures operational robustness and recovery behavior.
 
 ## 4. Determinism Grading
 
-The standard classifies systems by degree of determinism.
+The profile classifies systems by degree of determinism.
 
 - **D0 – Non-Deterministic:** Outputs and control paths vary unpredictably
 - **D1 – Weakly Deterministic:** Partial determinism with probabilistic control
 - **D2 – Controlled Determinism:** Deterministic control with probabilistic inputs
-- **D3 – Fully Deterministic:** Deterministic cognitive control and state evolution (Echoism-class)
+- **D3 – Fully Deterministic:** Fully reproducible behaviour; deterministic cognitive control and state evolution, where record-bound replay reproduces the decision exactly
 
 Determinism grading is orthogonal to task performance.
 
@@ -212,7 +219,7 @@ Phionyx supports four evaluation levels.
 - Semantic time-based memory traceability (for applicable systems)
 
 > **Naming note:** Earlier drafts used the label *Certification-Grade*. The
-> standard does not certify systems; it produces evidence suitable for
+> profile does not certify systems; it produces evidence suitable for
 > certification under external schemes (NIST AI RMF, ISO/IEC 42001, EU AI
 > Act). The renamed *Certification-Oriented Evidence Profile* makes this
 > distinction explicit. References to the older label remain in this v0.1
@@ -260,7 +267,7 @@ This section provides a practical migration path for organizations moving from D
 
 | Step | Action | Verification |
 |------|--------|--------------|
-| 1 | **State traceability:** For systems with deterministic state (e.g., thermodynamic state vector), log full state evolution (or sufficient fingerprint) so that execution can be reproduced. | State evolution log exists and is complete for certification scope. |
+| 1 | **State traceability:** For systems with deterministic state, log full state evolution (or sufficient fingerprint) so that execution can be reproduced. | State evolution log exists and is complete for certification scope. |
 | 2 | **Reproducibility:** For D3 systems, demonstrate that the same input + state produces the same output and state transition. | Reproducibility test suite passes (e.g., <0.5% deviation). |
 | 3 | **Telemetry and trace archives:** Retain complete telemetry and execution traces for the certification window; ensure block-level (or agent-step-level) traces are available. | No gaps in trace coverage for in-scope operations. |
 | 4 | **Governance decision logs:** Every governance gate decision (APPROVE, BLOCK, APPROVE_WITH_REDACTIONS, etc.) is logged with timestamp, input context, and outcome. | Logs are queryable and exportable for audit. |
@@ -286,7 +293,7 @@ Audit-grade evaluation requires:
 
 - **Deterministic telemetry publication:** All system events published in deterministic order
 - **Block-level execution traces:** Complete trace of all cognitive evaluation blocks and pipeline stages
-- **State evolution logs:** Complete history of thermodynamic state vector evolution (for applicable systems)
+- **State evolution logs:** Complete history of internal state evolution (for applicable systems)
 - **Reproducible replay capability:** Ability to replay any execution with identical results (for D3 systems)
 - **Semantic time traceability:** For systems implementing semantic time-based memory, complete trace of semantic time vector evolution and memory decay processes
 - **Governance decision logs:** Complete audit trail of all governance gate decisions and ethical constraint applications
@@ -330,7 +337,7 @@ These artifacts are suitable for:
 
 ---
 
-## 9. What This Standard Enables
+## 9. What This Profile Enables
 
 - Vendor-independent AI system comparison
 - Long-term behavioral monitoring
@@ -340,11 +347,11 @@ These artifacts are suitable for:
 
 ---
 
-## 10. What This Standard Is Not
+## 10. What This Profile Is Not
 
-❌ Not a leaderboard  
-❌ Not a benchmark dataset  
-❌ Not an accuracy contest  
+❌ Not a leaderboard
+❌ Not a benchmark dataset
+❌ Not an accuracy contest
 ❌ Not a model training guide
 
 It is a reference lens, not a competition mechanism.
@@ -353,11 +360,11 @@ It is a reference lens, not a competition mechanism.
 
 ## 11. Reference Implementation: Phionyx Product Portfolio
 
-Phionyx Evaluation Standard is validated against the Phionyx reference implementation.
+The Phionyx Open Evaluation Profile is validated against the Phionyx reference implementation. This section is **informative**: it illustrates one way to satisfy the normative criteria above and is not itself normative.
 
 ### Core Products (Tier 1):
 
-- **Phionyx Core SDK (Echoism Architecture):** Deterministic execution runtime, thermodynamic state management, 46-block canonical pipeline (v3.8.0), state/audit backbone. Targets D3 (Fully Deterministic) grading and L3 (Certification-Oriented Evidence Profile) evaluation level under controlled reproducibility tests; independent third-party validation pending.
+- **Phionyx Core SDK:** Deterministic execution runtime, thermodynamic state management, 46-block canonical pipeline (v3.8.0), state/audit backbone. In the reference implementation, the Coherence dimension is computed via a Phi mechanism. Targets D3 (Fully Deterministic) grading and L3 (Certification-Oriented Evidence Profile) evaluation level under controlled reproducibility tests; independent third-party validation pending.
 - **Phionyx Governance Node:** 4 gate architecture (Outbound, Merge, Release, Data) with pre-response internal state governance, EthicsVector-based constraint enforcement, cognitive envelope validation.
 - **Phionyx Interlink Protocol:** Typed envelope (AgentMessageEnvelope), schema-enforced agent communication, participant-scoped cognitive isolation, non-persistence doctrine for derived metrics.
 
@@ -370,7 +377,7 @@ Phionyx Evaluation Standard is validated against the Phionyx reference implement
 
 ### Evaluation Level Mapping:
 
-- **Core SDK (Echoism):** L3 (Certification-Oriented Evidence Profile), D3 (Fully Deterministic)
+- **Core SDK:** L3 (Certification-Oriented Evidence Profile), D3 (Fully Deterministic)
   - 100% deterministic execution
   - Full state traceability via thermodynamic state vector
   - 46-block canonical pipeline (v3.8.0) (contract v3.8.0) with block-level telemetry
@@ -388,7 +395,7 @@ Phionyx Evaluation Standard is validated against the Phionyx reference implement
 - **Enterprise Products:** L2-L3 (Assurance to Certification-Grade)
   - Varies by product and deployment configuration
 
-**Note:** Phionyx products serve as reference implementations, not exclusive implementations. The standard is vendor-independent and architecture-agnostic.
+**Note:** Phionyx products serve as reference implementations, not exclusive implementations. The profile is vendor-independent and architecture-agnostic. The grades reported above are self-assessed by the author; independent third-party validation is pending.
 
 ### 11.1 Intended Evolution
 
@@ -553,9 +560,22 @@ Multi-agent systems must maintain workflow traceability.
 
 ---
 
+## Neutrality & Conflict of Interest
+
+This profile is authored by the Phionyx project, which also maintains the Phionyx reference implementation. The authors therefore have an interest in the profile's adoption, and readers should weigh that interest accordingly.
+
+To keep the profile usable by anyone, the following constraints apply:
+
+- **Implementable by any runtime.** The evaluation criteria are defined to be implementable by any AI runtime, independent of Phionyx. No criterion requires Phionyx-specific code, mechanisms, or naming.
+- **Reference implementation is informative, not normative.** Section 11 and all references to Phionyx products, the Phi mechanism, the thermodynamic state vector, and the 46-block pipeline are illustrative examples of one conforming implementation. They are not requirements.
+- **Conformance is defined by normative text only.** A system conforms to this profile by meeting the normative criteria in this document, not by matching any particular implementation.
+- **Phionyx grades are self-assessed.** Any D-grade or L-level reported here for Phionyx products is self-assessed by the author. Independent third-party validation is pending and has not yet been performed.
+
+---
+
 ## 13. Strategic Positioning
 
-Phionyx Evaluation Standard is designed to become:
+The Phionyx Open Evaluation Profile is designed to become:
 
 **"An ISO-like global reference framework for AI behavioral evaluation and assurance."**
 
@@ -572,10 +592,10 @@ It enables trust without centralization, governance without vendor control, and 
   - UKIPO Super Family 2: Apparatus for Secure and Isolated Cognitive Data Transmission within Artificial Intelligence Architectures (Safety & Governance)
   - UKIPO Super Family 3: Method for Semantic Time-Based Cognitive Memory Management in Artificial Intelligence Systems (Memory System)
 - **arXiv Paper:** Echoism: A Deterministic Cognitive Architecture for AI Systems with Thermodynamic State Management (to be published)
-  - Reference [21] in arXiv paper cites this standard
-  - Paper documents Echoism's D3/L3 compliance with this standard
+  - Reference [21] in arXiv paper cites this profile
+  - Paper documents Echoism's D3/L3 compliance with this profile
 - **Technical Book:** Phionyx Technical Book (to be published on Amazon)
-  - Comprehensive technical documentation aligned with this standard
+  - Comprehensive technical documentation aligned with this profile
 
 ### Reference Implementation
 
@@ -602,7 +622,7 @@ It enables trust without centralization, governance without vendor control, and 
 ### Change Log
 
 - **2026-03-20 (v0.1.1 Errata — 46-Block Pipeline Alignment):** Updated reference implementation block count from 24 to 46, reflecting AGI World Model Sprint additions (5 sprints, 299 new tests) and feedback loop integration. Contract version updated to v3.8.0. New capabilities: causal reasoning (DAG, do-calculus, counterfactual), self-awareness (self-model, knowledge boundary), social cognition (trust propagation, goal decomposition), deliberative ethics (4-framework gate), and outcome feedback. All 46 blocks are real implementations (0 stubs).
-- **2026-02-07 (Publication & Migration Playbook):** Added “Publication as Public Reference Proposal” subsection: standard is suitable and recommended for publication as a public reference proposal; advantages (adoption, vendor-independent positioning, evolution) stated. Reinforced positioning as vendor-independent, model-agnostic, system-level evaluation framework. Added **Section 5.1 Migration Playbook: L1 → L2 → L3** with step-by-step tables for L0→L1, L1→L2, L2→L3, exit criteria, and summary table.
+- **2026-02-07 (Publication & Migration Playbook):** Added “Publication as Public Reference Proposal” subsection: profile is suitable and recommended for publication as a public reference proposal; advantages (adoption, vendor-independent positioning, evolution) stated. Reinforced positioning as vendor-independent, model-agnostic, system-level evaluation framework. Added **Section 5.1 Migration Playbook: L1 → L2 → L3** with step-by-step tables for L0→L1, L1→L2, L2→L3, exit criteria, and summary table.
 - **2026-01-29 (Structure Updates):** Scope section updated with latest system types (deterministic cognitive architectures, semantic time-based memory systems), System Health dimension enhanced with semantic time and memory metrics, Evaluation Levels enhanced with semantic time traceability, Telemetry section enhanced with governance decision logs and evidence chain maintenance, Reference Implementation section updated with detailed Echoism metrics and compliance data, Cross-references section enhanced with patent family details
 - **2026-01-29 (English Translation):** English translation completed, terminology standardized (Phi/Cognitive Resonance), cross-references added, formatting improved
 
@@ -610,7 +630,7 @@ It enables trust without centralization, governance without vendor control, and 
 
 ## License
 
-This standard is provided as a public reference proposal under the following terms:
+This profile is provided as a public reference proposal under the following terms:
 
 **Copyright:** © 2026 Phionyx Research Team. All rights reserved.
 
@@ -630,6 +650,5 @@ This standard is provided as a public reference proposal under the following ter
 
 ---
 
-*Document prepared by Phionyx Research Team*  
+*Document prepared by Phionyx Research Team*
 *For inquiries, contact: [Contact information to be added]*
-
