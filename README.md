@@ -1,5 +1,12 @@
 # Phionyx Open Evaluation Profile
 
+> ⚠️ **ARCHIVED — historical research artefact.** Superseded for current work by
+> [Measurement Axioms](https://github.com/halvrenofviryel/measurement-axioms) and
+> [AIREP](https://github.com/halvrenofviryel/ai-runtime-evidence-protocol).
+> **No new conformance claims should be inferred from this repository.** Component
+> versions and publication statements below reflect the state at archival time and
+> are not maintained.
+
 > Vendor-independent proposal for publishing reviewer-runnable governance evidence for agentic AI runtimes.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20027513.svg)](https://doi.org/10.5281/zenodo.20027513) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
